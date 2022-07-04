@@ -22,6 +22,24 @@ namespace UAS_grafkom
 
         double time;
         Camera camera;
+        Mesh try2 = new Mesh();
+        Mesh try3 = new Mesh();
+        Mesh try4 = new Mesh();
+        Mesh try5 = new Mesh();
+        Mesh try6 = new Mesh();
+        Mesh try7 = new Mesh();
+        Mesh try8 = new Mesh();
+        Mesh try9 = new Mesh();
+        Mesh try10 = new Mesh();
+
+        Mesh try11 = new Mesh();
+        Mesh try12 = new Mesh();
+        Mesh try13 = new Mesh();
+        Mesh try14 = new Mesh();
+        Mesh try15 = new Mesh();
+        Mesh try16 = new Mesh();
+        Mesh try17 = new Mesh();
+        Mesh try18 = new Mesh();
 
         readonly Vector3[] _cubePositions =
         {
@@ -39,10 +57,12 @@ namespace UAS_grafkom
         };
         private readonly Vector3[] _pointLightPositions =
         {
-            new Vector3(0.7f, 0.2f, 2.0f),
+            /*new Vector3(0.7f, 0.2f, 2.0f),
             new Vector3(2.3f, -3.3f, -4.0f),
             new Vector3(-4.0f, 2.0f, -12.0f),
-            new Vector3(0.0f, 0.0f, -3.0f)
+            new Vector3(0.0f, 0.0f, -3.0f)*/
+            new Vector3(1.0f, 0.0f, 0.0f),
+            new Vector3(0.0f, 0.0f, 0.0f)
         };
 
         Asset3d LightObject;
@@ -78,10 +98,80 @@ namespace UAS_grafkom
             GL.ClearColor(0.5f, 0.5f, 0.5f, 1.0f);
             GL.Enable(EnableCap.DepthTest);
             //inisialisasi camera
-            camera = new Camera(new Vector3(0, 0, 1), Size.X / (float)Size.Y);
+            camera = new Camera(new Vector3(0.5f, 0.5f, 0.5f), Size.X / (float)Size.Y);
+            try2.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/button.obj");
+            try2.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try2.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try3.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/mejabutton.obj");
+            try3.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try3.setColor(new Vector3(0 / 255f, 255 / 255f, 0 / 255f));
+
+            try4.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/pizza.obj");
+            try4.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try4.setColor(new Vector3(0 / 255f, 0 / 255f, 255 / 255f));
+
+            try5.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/mangkok.obj");
+            try5.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try5.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try6.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/meja1.obj");
+            try6.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try6.setColor(new Vector3(125 / 255f, 125 / 255f, 12 / 255f));
+
+            try7.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/meja2.obj");
+            try7.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try7.setColor(new Vector3(0 / 255f, 0 / 255f, 255 / 255f));
+
+            try8.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/meja3.obj");
+            try8.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try8.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try9.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/meja4.obj");
+            try9.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try9.setColor(new Vector3(0 / 255f, 255 / 255f, 0 / 255f));
+
+            try10.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetCafetaria/laptop.obj");
+            try10.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try10.setColor(new Vector3(0 / 255f, 0 / 255f, 255 / 255f));
+
+            try11.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/kabelBiru.obj");
+            try11.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try11.setColor(new Vector3(0 / 255f, 0 / 255f, 255 / 255f));
+
+            try12.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/kabelHitam.obj");
+            try12.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try12.setColor(new Vector3(0 / 255f, 255 / 255f, 0 / 255f));
+
+            try13.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/kabelKuning.obj");
+            try13.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try13.setColor(new Vector3(125 / 255f, 125 / 255f, 125 / 255f));
+
+            try14.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/kabelMerah.obj");
+            try14.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try14.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try15.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/lemari1.obj");
+            try15.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try15.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try16.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/box1.obj");
+            try16.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try16.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try17.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/box2.obj");
+            try17.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try17.setColor(new Vector3(255 / 255f, 0 / 255f, 0 / 255f));
+
+            try18.LoadObjFile("D:/materi/semester4/grafkom/assets/AssetElectrical/ruangan3.obj");
+            try18.setupObject((float)Size.X, (float)Size.Y, "lighting");
+            try18.setColor(new Vector3(200 / 255f, 200 / 255f, 200 / 255f));
+
+            /*try2.scale(0.5f);*/
+
             //inisialisasi benda
             //inisialisasi light
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 var LightObj = new Asset3d(new Vector3(1, 0.5f, 0.31f));
                 LightObj.createBoxVertices2(_pointLightPositions[i].X, _pointLightPositions[i].Y, _pointLightPositions[i].Z, 0.5f);
@@ -111,22 +201,42 @@ namespace UAS_grafkom
             base.OnRenderFrame(args);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-
+            Matrix4 temp = Matrix4.Identity;
             foreach (Asset3d i in _lights)
             {
                 i.render(1, temp, time, camera.GetViewMatrix(), camera.GetProjectionMatrix());
             }
-            foreach (Asset3d i in _objectList)
+            /*foreach (Asset3d i in _objectList)
             {
                 i.render(1, temp, time, camera.GetViewMatrix(), camera.GetProjectionMatrix());
-                i.setFragVariable(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(1.2f, 1.0f, 2.0f), camera.Position);
+                i.setFragVariable(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(1.2f, 1.0f, 2.0f), camera.Position);*/
                 /*i.setDirectionalLight(new Vector3(-0.2f, -1.0f, -0.3f), new Vector3(0.05f, 0.05f, 0.05f), new Vector3(0.4f, 0.4f, 0.4f), new Vector3(0.5f, 0.5f, 0.5f));*/
-                /*i.setPointLight(LightObject._centerPosition, new Vector3(0.05f, 0.05f, 0.05f), new Vector3(0.8f, 0.8f, 0.8f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);*/
+                /*i.setPointLight(LightObject._centerPosition, new Vector3(0.05f, 0.05f, 0.05f), new Vector3(0.8f, 0.8f, 0.8f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);*//*
                 i.setSpotLight(new Vector3(0, 5, 0), new Vector3(0, -1, 0), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f),
                     1.0f, 0.09f, 0.032f, MathF.Cos(MathHelper.DegreesToRadians(12.5f)), MathF.Cos(MathHelper.DegreesToRadians(12.5f)));
                 i.setPointLights(_pointLightPositions, new Vector3(0.05f, 0.05f, 0.05f), new Vector3(0.8f, 0.8f, 0.8f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);
-            }
-            SwapBuffers();
+            }*/
+
+                /*try1.render(camera, new Vector3(1, 1, 1), new Vector3(0,0,0));*/
+                try2.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try3.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try4.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try5.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try6.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try7.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try8.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+                try9.render(camera, new Vector3(1, 1, 1), new Vector3(1, 0, 0));
+
+                try10.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try11.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try12.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try13.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try14.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try15.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try16.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try17.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                try18.render(camera, new Vector3(1, 1, 1), new Vector3(0, 0, 0));
+                SwapBuffers();
 
         }
         protected override void OnUpdateFrame(FrameEventArgs args)
