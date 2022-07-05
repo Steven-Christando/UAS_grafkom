@@ -11,7 +11,7 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace UAS_grafkom
 {
-    internal class Mesh
+    internal class BlenderObject
     {
         //Vector 3 pastikan menggunakan OpenTK.Mathematics
         //tanpa protected otomatis komputer menganggap sebagai private
@@ -28,8 +28,8 @@ namespace UAS_grafkom
         Matrix4 projection;
 
         //menambahkan hirarki kedalam parent
-        public List<Mesh> child = new List<Mesh>();
-        public Mesh()
+        public List<BlenderObject> child = new List<BlenderObject>();
+        public BlenderObject()
         {
         }
 
@@ -38,7 +38,7 @@ namespace UAS_grafkom
         {
             _color = colors;
         }
-        public void setupObject(float Sizex, float Sizey, string abc)
+        public void load(float Sizex, float Sizey, string abc, int type = 0)
         {
             //inisialisasi Transformasi
             model = Matrix4.Identity;
@@ -53,8 +53,7 @@ namespace UAS_grafkom
                 realVertices.Count * sizeof(float),
                 realVertices.ToArray(),
                 BufferUsageHint.StaticDraw);
-            /*_shader = new Shader("../../../shader/object.vert", "../../../shader/" + abc +".frag")*/;
-            _shader = new Shader("../../../shader/object.vert", "../../../shader/" + abc +".frag");
+            _shader = new Shader("../../../shader/object.vert", "../../../shader/object.frag");
 
 
 
@@ -62,14 +61,21 @@ namespace UAS_grafkom
             _vertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(_vertexArrayObject);
 
+            if(type == 0)
+            {
+                GL.EnableVertexAttribArray(0);
+                GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
 
-            /*var vertexLocation = _shader.GetAttribLocation("aPosition");*/
-            GL.EnableVertexAttribArray(0);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
+                GL.EnableVertexAttribArray(1);
+                GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+            } else if (type == 1)
+            {
+                GL.EnableVertexAttribArray(0);
+                GL.VertexAttribPointer(0, 4, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
 
-            /*var normalLocation = _shader.GetAttribLocation("aNormal");*/
-            GL.EnableVertexAttribArray(1);
-            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+                GL.EnableVertexAttribArray(1);
+                GL.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+            }
 
 
             //setting disini
@@ -90,20 +96,19 @@ namespace UAS_grafkom
             _shader.SetMatrix4("projection", _camera.GetProjectionMatrix());
 
             _shader.SetVector3("objectColor", this._color);
-            _shader.SetVector3("lightColor", _lightColor);
-            _shader.SetVector3("lightPos", _lightPos);
             _shader.SetVector3("viewPos", _camera.Position);
 
             GL.DrawArrays(PrimitiveType.Triangles, 0, realVertices.Count);
 
         }
-        /*public void setFragVariable(Vector3 lightColor, Vector3 lightPos, Vector3 viewPos)
+        public void scale(float scaling)
         {
-            _shader.SetVector3("ourColor", this._color);
-            /*_shader.SetVector3("lightColor", lightColor);*/
-            /*_shader.SetVector3("lightPos", lightPos);*//*
-            _shader.SetVector3("viewPos", viewPos);
-        }*/
+            model = model * Matrix4.CreateScale(scaling);
+        }
+        public void translate(float x, float y, float z)
+        {
+            model = model * Matrix4.CreateTranslation(x, y, z);
+        }
         public void setDirectionalLight(Vector3 direction, Vector3 ambient, Vector3 diffuse, Vector3 specular)
         {
             _shader.SetVector3("dirLight.direction", direction);
@@ -182,6 +187,7 @@ namespace UAS_grafkom
                             realVertices.Add(vertices[int.Parse(comps[0]) - 1].X);
                             realVertices.Add(vertices[int.Parse(comps[0]) - 1].Y);
                             realVertices.Add(vertices[int.Parse(comps[0]) - 1].Z);
+                            
                             //normal
                             realVertices.Add(normals[int.Parse(comps[2]) - 1].X);
                             realVertices.Add(normals[int.Parse(comps[2]) - 1].Y);
