@@ -23,7 +23,7 @@ namespace UAS_grafkom
         int _vertexBufferObject;
         int _vertexArrayObject;
         Shader _shader;
-        Matrix4 transform;
+        Matrix4 model;
         Matrix4 view;
         Matrix4 projection;
 
@@ -41,7 +41,7 @@ namespace UAS_grafkom
         public void setupObject(float Sizex, float Sizey, string abc)
         {
             //inisialisasi Transformasi
-            transform = Matrix4.Identity;
+            model = Matrix4.Identity;
 
             //inisialisasi buffer
 
@@ -53,7 +53,8 @@ namespace UAS_grafkom
                 realVertices.Count * sizeof(float),
                 realVertices.ToArray(),
                 BufferUsageHint.StaticDraw);
-            _shader = new Shader("../../../shader/shaderl.vert", "../../../shader/" + abc + ".frag");
+            /*_shader = new Shader("../../../shader/object.vert", "../../../shader/" + abc +".frag")*/;
+            _shader = new Shader("../../../shader/object.vert", "../../../shader/" + abc +".frag");
 
 
 
@@ -84,78 +85,60 @@ namespace UAS_grafkom
 
             GL.BindVertexArray(_vertexArrayObject);
 
-            _shader.SetMatrix4("transform", transform);
+            _shader.SetMatrix4("model", model);
             _shader.SetMatrix4("view", _camera.GetViewMatrix());
             _shader.SetMatrix4("projection", _camera.GetProjectionMatrix());
 
-
-            _shader.SetVector3("objectColor", _color);
+            _shader.SetVector3("objectColor", this._color);
             _shader.SetVector3("lightColor", _lightColor);
             _shader.SetVector3("lightPos", _lightPos);
             _shader.SetVector3("viewPos", _camera.Position);
 
+            GL.DrawArrays(PrimitiveType.Triangles, 0, realVertices.Count);
 
-            GL.DrawArrays(PrimitiveType.Triangles, 0, realVertices.Count / 2);
-
-
-            //ada disini
-            foreach (var meshobj in child)
-            {
-                meshobj.render(_camera, _lightColor, _lightPos);
-            }
         }
-        /*public List<Vector3> getVertices()
+        /*public void setFragVariable(Vector3 lightColor, Vector3 lightPos, Vector3 viewPos)
         {
-            return vertices;
-        }
-        public List<uint> getVertexIndices()
-        {
-            return vertexIndices;
-        }
-
-        public void setVertexIndices(List<uint> temp)
-        {
-            vertexIndices = temp;
+            _shader.SetVector3("ourColor", this._color);
+            /*_shader.SetVector3("lightColor", lightColor);*/
+            /*_shader.SetVector3("lightPos", lightPos);*//*
+            _shader.SetVector3("viewPos", viewPos);
         }*/
-
-        /*public void rotate(float x = 0, float y = 0, float z = 0)
+        public void setDirectionalLight(Vector3 direction, Vector3 ambient, Vector3 diffuse, Vector3 specular)
         {
-            //transform
-            transform = transform * Matrix4.CreateRotationX(MathHelper.DegreesToRadians(x));
-            transform = transform * Matrix4.CreateRotationY(MathHelper.DegreesToRadians(y));
-            transform = transform * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(z));
+            _shader.SetVector3("dirLight.direction", direction);
+            _shader.SetVector3("dirLight.ambient", ambient);
+            _shader.SetVector3("dirLight.diffuse", diffuse);
+            _shader.SetVector3("dirLight.specular", specular);
         }
-        public void rotateall(float x = 0, float y = 0, float z = 0)
+        public void setSpotLight(Vector3 position, Vector3 direction, Vector3 ambient, Vector3 diffuse, Vector3 specular, float constant, float linear, float quadratic, float cutOff, float outerCutOff)
         {
+            _shader.SetVector3("spotLight.position", position);
+            _shader.SetVector3("spotLight.direction", direction);
+            _shader.SetVector3("spotLight.ambient", ambient);
+            _shader.SetVector3("spotLight.diffuse", diffuse);
 
-            //transform
-            transform = transform * Matrix4.CreateRotationX(MathHelper.DegreesToRadians(x));
-            transform = transform * Matrix4.CreateRotationY(MathHelper.DegreesToRadians(y));
-            transform = transform * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(z));
-            foreach (var meshobj in child)
-            {
-                meshobj.rotateall(x, y, z);
-            }
+            _shader.SetVector3("spotLight.specular", specular);
+            _shader.SetFloat("spotLight.constant", constant);
+            _shader.SetFloat("spotLight.linear", linear);
+            _shader.SetFloat("spotLight.quadratic", quadratic);
+            _shader.SetFloat("spotLight.cutOff", cutOff);
+            _shader.SetFloat("spotLight.outerCutOff", outerCutOff);
         }
-
-        public void scale(float scaling)
+        public void setPointLights(Vector3[] position, Vector3 ambient, Vector3 diffuse, Vector3 specular, float constant, float linear, float quadratic)
         {
-            transform = transform * Matrix4.CreateScale(scaling);
-
-            foreach (var meshobj in child)
+            for (int i = 0; i < position.Length; i++)
             {
-                meshobj.scale(scaling);
+                _shader.SetVector3($"pointLight[{i}].position", position[i]);
+                _shader.SetVector3($"pointLight[{i}].ambient", new Vector3(0.05f, 0.05f, 0.05f));
+                _shader.SetVector3($"pointLight[{i}].diffuse", new Vector3(0.8f, 0.8f, 0.8f));
+                _shader.SetVector3($"pointLight[{i}].specular", new Vector3(1.0f, 1.0f, 1.0f));
+                _shader.SetFloat($"pointLight[{i}].constant", 1.0f);
+                _shader.SetFloat($"pointLight[{i}].linear", 0.09f);
+                _shader.SetFloat($"pointLight[{i}].quadratic", 0.032f);
             }
+
         }
-        public void translate(float x, float y, float z)
-        {
-            transform = transform * Matrix4.CreateTranslation(x, y, z);
-            foreach (var meshobj in child)
-            {
-                meshobj.translate(x, y, z);
-            }
-        }*/
-
         public void LoadObjFile(string path)
         {
             //komputer ngecek, apakah file bisa diopen atau tidak
@@ -169,79 +152,41 @@ namespace UAS_grafkom
             {
                 while (!streamReader.EndOfStream)
                 {
-                    //aku ngambil 1 baris tersebut -> dimasukkan ke dalam List string -> dengan di split pakai spasi
-                    List<string> words = new List<string>(streamReader.ReadLine().ToLower().Split(' '));
-                    //removeAll(kondisi dimana penghapusan terjadi)
+                    
+                    List<string> words = new List<string>(streamReader.ReadLine().Split(' '));
                     words.RemoveAll(s => s == string.Empty);
-                    //Melakukan pengecekkan apakah dalam satu list -> ada isinya atau tidak list nya tersebut
-                    //kalau ada continue, perintah-perintah yang ada dibawahnya tidak akan dijalankan 
-                    //dan dia bakal kembali keatas lagi / melanjutkannya whilenya
                     if (words.Count == 0)
                         continue;
 
-                    //System.Console.WriteLine("New While");
-                    //foreach (string x in words)
-                    //               {
-                    //	System.Console.WriteLine("tes");
-                    //	System.Console.WriteLine(x);
-                    //               }
-
                     string type = words[0];
-                    //remove at -> menghapus data dalam suatu indexs dan otomatis data pada indeks
-                    //berikutnya itu otomatis mundur kebelakang 1
                     words.RemoveAt(0);
-
-
-                    switch (type)
+                    if(type == "v")
                     {
-                        // vertex
-                        //parse merubah dari string ke tipe variabel yang diinginkan
-                        //ada /10 karena saaat ini belum masuk materi camera
+                        vertices.Add(new Vector3(float.Parse(words[0]) / 10, float.Parse(words[1]) / 10, float.Parse(words[2]) / 10));
+                        
+                    } else if (type == "vn")
+                    {
+                        normals.Add(new Vector3(float.Parse(words[0]), float.Parse(words[1]), float.Parse(words[2])));
+                        
+                    } else if(type == "f")
+                    {
+                        foreach (string w in words)
+                        {
+                            if (w.Length == 0)
+                                continue;
 
-                        case "v":
-                            vertices.Add(new Vector3(float.Parse(words[0]) / 10, float.Parse(words[1]) / 10, float.Parse(words[2]) / 10));
-                            break;
-
-                        case "vt":
-                            textureVertices.Add(new Vector3(float.Parse(words[0]), float.Parse(words[1]),
-                                                            words.Count < 3 ? 0 : float.Parse(words[2])));
-                            break;
-
-                        case "vn":
-                            normals.Add(new Vector3(float.Parse(words[0]), float.Parse(words[1]), float.Parse(words[2])));
-                            break;
-                        // face
-                        case "f":
-                            foreach (string w in words)
-                            {
-                                if (w.Length == 0)
-                                    continue;
-                                //Console.WriteLine(w);
-                                string[] comps = w.Split('/');
-                                //Console.WriteLine(uint.Parse(comps[0])+" "+uint.Parse(comps[1])+" "+ uint.Parse(comps[2]));
-                                //Console.WriteLine(vertices[int.Parse(comps[0]) - 1].X+" "+ vertices[int.Parse(comps[0]) - 1].Y + " " + vertices[int.Parse(comps[0]) - 1].Z);
-
-                                //vertice
-                                realVertices.Add(vertices[int.Parse(comps[0]) - 1].X);
-                                realVertices.Add(vertices[int.Parse(comps[0]) - 1].Y);
-                                realVertices.Add(vertices[int.Parse(comps[0]) - 1].Z);
-                                //normal
-                                realVertices.Add(normals[int.Parse(comps[2]) - 1].X);
-                                realVertices.Add(normals[int.Parse(comps[2]) - 1].Y);
-                                realVertices.Add(normals[int.Parse(comps[2]) - 1].Z);
-                                //Console.WriteLine(int.Parse(comps[2]));
-                                ////texture
-                                //realVertices.Add(textureVertices[int.Parse(comps[1]) - 1].X);
-                                //realVertices.Add(textureVertices[int.Parse(comps[1]) - 1].Y);
+                            string[] comps = w.Split('/');
 
 
-
-
-                            }
-                            break;
-
-                        default:
-                            break;
+                            //vertice
+                            realVertices.Add(vertices[int.Parse(comps[0]) - 1].X);
+                            realVertices.Add(vertices[int.Parse(comps[0]) - 1].Y);
+                            realVertices.Add(vertices[int.Parse(comps[0]) - 1].Z);
+                            //normal
+                            realVertices.Add(normals[int.Parse(comps[2]) - 1].X);
+                            realVertices.Add(normals[int.Parse(comps[2]) - 1].Y);
+                            realVertices.Add(normals[int.Parse(comps[2]) - 1].Z);
+                        }
                     }
                 }
             }

@@ -6,8 +6,8 @@ uniform vec3 lightColor;
 
 uniform vec3 lightPos; //The position of the light.
 uniform vec3 viewPos; //The position of the view and/or of the player.
-in vec3 Normal; //The normal of the fragment is calculated in the vertex shader.
-in vec3 FragPos; //The fragment position.
+in vec3 normal; //The normal of the fragment is calculated in the vertex shader.
+in vec3 vertexPosition; //The fragment position.
 
 void main()
 {
@@ -17,8 +17,8 @@ void main()
 
     //diffuse
     //We calculate the light direction, and make sure the normal is normalized.
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(lightPos - FragPos); //Note: The light is pointing from the light to the fragment
+    vec3 norm = normalize(normal);
+    vec3 lightDir = normalize(lightPos - vertexPosition); //Note: The light is pointing from the light to the fragment
 
     //This is the part of the light that gives the most, it is the color of the object where it is hit by light.
     float diff = max(dot(norm, lightDir), 0.0); //We make sure the value is non negative with the max function.
@@ -28,7 +28,7 @@ void main()
     //The specular light is the light that shines from the object, like light hitting metal.
     //The calculations are explained much more detailed in the web version of the tutorials.
     float specularStrength = 0.5;
-    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 viewDir = normalize(viewPos - vertexPosition);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 2); //The 32 is the shininess of the material.
     vec3 specular = specularStrength * spec * lightColor;
