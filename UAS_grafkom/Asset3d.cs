@@ -13,7 +13,7 @@ namespace UAS_grafkom
         public List<Vector3> _vertices = new List<Vector3>();
         private List<uint> _indices = new List<uint>();
 
-        private Vector3 _color, _lightColor;
+        private Vector4 _color, _lightColor;
 
         int _vertexBufferObject;
         int _elementBufferObject;
@@ -26,7 +26,10 @@ namespace UAS_grafkom
         public Vector3 _centerPosition = new Vector3(0, 0, 0);
         public List<Vector3> _euler = new List<Vector3>();
         Vector3 objectCenter;
-        public Asset3d(Vector3 color)
+
+        public float lengthBox = 0;
+
+        public Asset3d(Vector4 color)
         {
             this._color = color;
             /*this._lightColor = lightColor;*/
@@ -109,7 +112,7 @@ namespace UAS_grafkom
 
         public void setFragVariable(Vector3 lightColor, Vector3 lightPos, Vector3 viewPos)
         {
-            _shader.SetVector3("ourColor", this._color);
+            _shader.SetVector4("ourColor", this._color);
             /*_shader.SetVector3("lightColor", lightColor);*/
             /*_shader.SetVector3("lightPos", lightPos);*/
             _shader.SetVector3("viewPos", viewPos);
@@ -120,7 +123,7 @@ namespace UAS_grafkom
             GL.BindVertexArray(_vertexArrayObject);
             //uniform untuk color
             /*setFragVariable(this._color,this._lightColor);*/
-            /*_shader.SetVector3("ourColor", _color);*/
+            _shader.SetVector4("ourColor", this._color);
             //int vertexColorLocation = GL.GetUniformLocation(_shader.Handle, "ourColor");
             //GL.Uniform4(vertexColorLocation, 0.0f, 0.2f, 0.0f, 1.0f);
             //GL.Uniform4(vertexColorLocation, _color);
@@ -225,7 +228,7 @@ namespace UAS_grafkom
                 }
             }
         }
-        public void createBoxVertices(float x, float y, float z)
+        public void createBoxVertices(float x, float y, float z, float length)
         {
             //biar lebih fleksibel jangan inisialiasi posisi dan 
             //panjang kotak didalam tapi ditaruh ke parameter
@@ -233,7 +236,12 @@ namespace UAS_grafkom
             float _positionY = y;
             float _positionZ = z;
 
-            float _boxLength = 1.0f;
+            float _boxLength = length;
+            
+            //ini global variable
+            this.lengthBox = length;
+            this._centerPosition = new Vector3(x, y, z);
+
 
             //Buat temporary vector
             Vector3 temp_vector;

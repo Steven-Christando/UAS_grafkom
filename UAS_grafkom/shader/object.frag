@@ -31,7 +31,7 @@ struct PointLight {
     vec3 specular;
 };
 //uniform PointLight pointLight;
-#define NR_POINT_LIGHTS 2
+#define NR_POINT_LIGHTS 3
 uniform PointLight pointLight[NR_POINT_LIGHTS];
 struct SpotLight{
     vec3  position;
@@ -61,7 +61,7 @@ void main()
  vec3 result = CalcDirLight(dirLight,norm,viewDir);
  for(int i = 0; i < NR_POINT_LIGHTS; i++)
         result += CalcPointLight(pointLight[i], norm, vec3(vertexPosition), viewDir);
-    //result += CalcSpotLight(spotLight, norm, vec3(vertexPosition), viewDir);
+    result += CalcSpotLight(spotLight, norm, vec3(vertexPosition), viewDir);
  
  outputColor = vec4(result,1.0f);
 }

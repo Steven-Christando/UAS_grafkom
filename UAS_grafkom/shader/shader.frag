@@ -18,14 +18,14 @@ in vec4 vertexColor;
 
 //uniform vec4 ourColor;
 
-uniform vec3 ourColor;
+uniform vec4 ourColor;
 uniform vec3 lightColor;
 void main()
 {
 // outputColor = vec4(1.0, 1.0, 1.0, 1.0);  //white color
  //outputColor = vertexColor;  //white color
- //outputColor = ourColor;  //white color
- outputColor = vec4(1.0,1.0,1.0, 1.0);
+ outputColor = ourColor;  //white color
+ //outputColor = vec4(1.0,0.0,0.0, 0.0);
  //outputColor = vec4(ourColor*lightColor,1.0);
 
  //float ambientStrength = 0.1f;
