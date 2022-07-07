@@ -11,5 +11,5 @@ project UAS Grafika Komputer Kelas A
 <a href = "https://docs.google.com/document/d/18UFsuOYGIYJZgFeD4b60FkQghpqmpY4c9fGpUglaFVY/edit?usp=sharing">Laporan Projek</a>
 </div>
 <div>
-<a href = "">Rekaman demo project</a>
+<a href = "https://drive.google.com/file/d/1KWN00kEKuV5bFWtWQ2hJ8v_89k_jD0X0/view">Rekaman demo project</a>
 </div>
