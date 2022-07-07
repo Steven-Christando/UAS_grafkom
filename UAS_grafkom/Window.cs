@@ -249,6 +249,31 @@ namespace UAS_grafkom
             new Vector4(1.5f, 0.5f, 0.7f, 0.4f),
             new Vector4(1.5f, 0.5f, 0.6f, 0.4f),
             new Vector4(1.5f, 0.5f, 0.545f, 0.4f),
+
+            //kiri depan
+            /*new Vector4(0.125f, 0.5f, 0.525f, 0.4f),
+            new Vector4(0.125f, 0.5f, 0.6f, 0.4f),*/
+            new Vector4(0.1f, 0.5f, 0.1f, 0.4f),
+            new Vector4(0.2f, 0.5f, 0.0f, 0.4f),
+            new Vector4(0.3f, 0.5f, -0.1f, 0.4f),
+            new Vector4(0.4f, 0.5f, -0.2f, 0.4f),
+            //depan
+            new Vector4(0.5f, 0.5f, -0.2f, 0.4f),
+            new Vector4(0.6f, 0.5f, -0.2f, 0.4f),
+            new Vector4(0.7f, 0.5f, -0.2f, 0.4f),
+            new Vector4(0.8f, 0.5f, -0.2f, 0.4f),
+            new Vector4(0.9f, 0.5f, -0.2f, 0.4f),
+            new Vector4(1.0f, 0.5f, -0.2f, 0.4f),
+            new Vector4(1.1f, 0.5f, -0.2f, 0.4f),
+            new Vector4(1.2f, 0.5f, -0.2f, 0.4f),
+            new Vector4(1.3f, 0.5f, -0.2f, 0.4f),
+
+            //kanan depan
+            new Vector4(1.2f, 0.5f, -0.2f, 0.4f),
+            new Vector4(1.3f, 0.5f, -0.1f, 0.4f),
+            new Vector4(1.4f, 0.5f, 0.0f, 0.4f),
+            new Vector4(1.5f, 0.5f, 0.1f, 0.4f),
+            /*new Vector4(1.5f, 0.5f, 0.2f, 0.4f),*/
             
             //weapon room
             //kursi
@@ -261,12 +286,52 @@ namespace UAS_grafkom
             new Vector4(2.88f,  0.5f,  0.75f, 1.1f),
             new Vector4(3f,  0.5f,  0.75f, 1f),
 
+            new Vector4(3.1f, 0.5f, 1f, 0.4f),
+            new Vector4(3.2f, 0.5f, 1f, 0.4f),
+            new Vector4(3.3f, 0.5f, 1f, 0.4f),
+            new Vector4(3.4f, 0.5f, 0.975f, 0.4f),
+            new Vector4(3.5f, 0.5f, 0.975f, 0.4f),
+            new Vector4(3.6f, 0.5f, 0.975f, 0.4f),
             //new Vector4(2.65f, 0.5f, 0.545f, 0.4f),
+
+            new Vector4(2.88f,  0.5f,  0.75f, 1.1f),
+            new Vector4(3f,  0.5f,  0.75f, 1f),
+
+            new Vector4(3.1f, 0.5f, 1f, 0.4f),
+            new Vector4(3.2f, 0.5f, 1f, 0.4f),
+            new Vector4(3.3f, 0.5f, 1f, 0.4f),
+            new Vector4(3.4f, 0.5f, 0.975f, 0.4f),
+            new Vector4(3.5f, 0.5f, 0.975f, 0.4f),
+            new Vector4(3.6f, 0.5f, 0.975f, 0.4f),
+
+            //kiri tabung
+            new Vector4(3.8f, 0.5f, 0.1f, 0.4f),
+            new Vector4(3.8f, 0.5f, 0.3f, 0.4f),
+            new Vector4(3.8f, 0.5f, 0.55f, 0.4f),
+            new Vector4(3.8f, 0.5f, 0.7f, 0.4f),
+            new Vector4(3.75f, 0.5f, 0.6f, 0.4f),
+            new Vector4(3.75f, 0.5f, 0.7f, 0.4f),
+            new Vector4(3.75f, 0.5f, 0.8f, 0.4f),
+            new Vector4(3.8f, 0.5f, 0.9f, 0.4f),
+
+            new Vector4(3.55f, 0.5f, 0.4f, 0.4f),
+            new Vector4(3.55f, 0.5f, 0.5f, 0.4f),
+            new Vector4(3.5f, 0.5f, 0.325f, 0.4f),
+            new Vector4(3.5f, 0.5f, 0.375f, 0.4f),
+            new Vector4(3.475f, 0.5f, 0.425f, 0.4f),
+
+            //kanan tabung
+            new Vector4(3.65f, 0.5f, 0.75f, 0.4f),
+            new Vector4(3.65f, 0.5f, 0.6f, 0.4f),
+            new Vector4(3.65f, 0.5f, 0.5f, 0.4f),
+            new Vector4(3.65f, 0.5f, 0.6f, 0.4f),
+            new Vector4(3.65f, 0.5f, 0.7f, 0.4f),
+            new Vector4(3.65f, 0.5f, 0.85f, 0.4f),
 
         };
 
         Vector3 specularlight = new Vector3(1.0f, 1.0f, 1.0f);
-        Vector3 lightColor = new Vector3(0.05f, 0.05f, 0.05f);
+        Vector3 lightColor = new Vector3(0.5f, 0.5f, 0.5f);
         Vector3 incrementLightColor = new Vector3(0.0002f, 0.0f, 0.0f);
         bool blink = false;
         Vector3 spotlightColor = new Vector3(0.0f, 0.0f, 0.0f);
@@ -310,125 +375,125 @@ namespace UAS_grafkom
             camera = new Camera(new Vector3(3f, 0.475f, 0.5f), Size.X / (float)Size.Y);
             
             /*load asset di cafetaria*/
-            try2.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/button.obj");
+            try2.LoadObjFile("../../../../assets/AssetCafetaria/button.obj");
             try2.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try2);
 
-            try3.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/mejabutton.obj");
+            try3.LoadObjFile("../../../../assets/AssetCafetaria/mejabutton.obj");
             try3.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try3);
 
-            try4.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/pizza.obj");
+            try4.LoadObjFile("../../../../assets/AssetCafetaria/pizza.obj");
             try4.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try4);
 
-            try5.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/mangkok.obj");
+            try5.LoadObjFile("../../../../assets/AssetCafetaria/mangkok.obj");
             try5.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try5);
 
-            try6.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/meja1.obj");
+            try6.LoadObjFile("../../../../assets/AssetCafetaria/meja1.obj");
             try6.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try6);
 
-            try7.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/meja2.obj");
+            try7.LoadObjFile("../../../../assets/AssetCafetaria/meja2.obj");
             try7.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try7);
 
-            try8.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/meja3.obj");
+            try8.LoadObjFile("../../../../assets/AssetCafetaria/meja3.obj");
             try8.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try8);
 
-            try9.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/meja4.obj");
+            try9.LoadObjFile("../../../../assets/AssetCafetaria/meja4.obj");
             try9.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try9);
 
-            try10.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/laptop.obj");
+            try10.LoadObjFile("../../../../assets/AssetCafetaria/laptop.obj");
             try10.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try10);
 
-            try11.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/room_chara2.obj");
+            try11.LoadObjFile("../../../../assets/AssetCafetaria/room_chara2.obj");
             try11.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try11);
 
-            try12.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/room_chara.obj");
+            try12.LoadObjFile("../../../../assets/AssetCafetaria/room_chara.obj");
             try12.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try12);
 
-            try13.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/room_chara2.obj");
+            try13.LoadObjFile("../../../../assets/AssetCafetaria/room_chara2.obj");
             try13.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try13);
 
-            try30.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetCafetaria/tulisan.obj");
+            try30.LoadObjFile("../../../../assets/AssetCafetaria/tulisan.obj");
             try30.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try30);
 
             //load assets di electrical
-            try14.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/deadBody.obj");
+            try14.LoadObjFile("../../../../assets/AssetElectrical/deadBody.obj");
             try14.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try14);
 
-            try15.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/kabelBiru.obj");
+            try15.LoadObjFile("../../../../assets/AssetElectrical/kabelBiru.obj");
             try15.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try15);
 
-            try16.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/kabelHijau.obj");
+            try16.LoadObjFile("../../../../assets/AssetElectrical/kabelHijau.obj");
             try16.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try16);
 
-            try17.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/impostor.obj");
+            try17.LoadObjFile("../../../../assets/AssetElectrical/impostor.obj");
             try17.load((float)Size.X, (float)Size.Y);
 
-            try18.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/kabelMerah.obj");
+            try18.LoadObjFile("../../../../assets/AssetElectrical/kabelMerah.obj");
             try18.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try18);
 
-            try19.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/lemari1.obj");
+            try19.LoadObjFile("../../../../assets/AssetElectrical/lemari1.obj");
             try19.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try19);
 
-            try20.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/box1.obj");
+            try20.LoadObjFile("../../../../assets/AssetElectrical/box1.obj");
             try20.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try20);
 
-            try21.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetElectrical/box2.obj");
+            try21.LoadObjFile("../../../../assets/AssetElectrical/box2.obj");
             try21.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try21);
 
             //load ruangan di weapon
-            try22.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/bulatan.obj");
+            try22.LoadObjFile("../../../../assets/AssetWeapon/bulatan.obj");
             try22.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try22);
 
-            try23.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/kursi.obj");
+            try23.LoadObjFile("../../../../assets/AssetWeapon/kursi.obj");
             try23.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try23);
 
-            try24.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/layar.obj");
+            try24.LoadObjFile("../../../../assets/AssetWeapon/layar.obj");
             try24.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try24);
 
-            try25.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/pagar.obj");
+            try25.LoadObjFile("../../../../assets/AssetWeapon/pagar.obj");
             try25.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try25);
 
-            try26.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/pembatasPagar.obj");
+            try26.LoadObjFile("../../../../assets/AssetWeapon/pembatasPagar.obj");
             try26.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try26);
 
-            try27.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/pipa.obj");
+            try27.LoadObjFile("../../../../assets/AssetWeapon/pipa.obj");
             try27.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try27);
 
-            try31.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/AssetWeapon/mainChara.obj");
+            try31.LoadObjFile("../../../../assets/AssetWeapon/mainChara.obj");
             try31.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try31);
 
             //load ruangan
-            try28.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/Ruangan/atap.obj");
+            try28.LoadObjFile("../../../../assets/Ruangan/atap.obj");
             try28.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try28);
 
-            try29.LoadObjFile("D:/Petra/.Semester 4/Grafika Komputer/Prak/UAS_grafkom/assets/Ruangan/final.obj");
+            try29.LoadObjFile("../../../../assets/Ruangan/final.obj");
             try29.load((float)Size.X, (float)Size.Y);
             _objectList.Add(try29);
 
@@ -473,7 +538,7 @@ namespace UAS_grafkom
                 j.render(1, temp, time, camera.GetViewMatrix(), camera.GetProjectionMatrix());
             }*/
 
-            if (blink && (lightColor.X < 0.0f || lightColor.X > 0.2f))
+            if (blink && (lightColor.X < 0.0f || lightColor.X > 0.4f))
             {
                 incrementLightColor *= new Vector3(-1.0f, 0.0f, 0.0f);
             }
@@ -484,12 +549,26 @@ namespace UAS_grafkom
                 if (blink)
                 {
                     lightColor += incrementLightColor;
-                }                
+                }
 
-                i.setDirectionalLight(new Vector3(0.2f, 1.0f, 0f), lightColor, new Vector3(0.4f, 0.4f, 0.4f), new Vector3(0.5f, 0.5f, 0.5f));
+                //awal
+                /*i.setDirectionalLight(new Vector3(0.2f, 1.0f, 0f), lightColor, new Vector3(0.4f, 0.4f, 0.4f), new Vector3(0.5f, 0.5f, 0.5f));
                 i.setSpotLight(camera.Position, camera.Front, new Vector3(0.0f, 0.0f, 0.0f), spotlightColor, new Vector3(1.0f, 1.0f, 1.0f),
                     1.0f, 0.09f, 0.032f, MathF.Cos(MathHelper.DegreesToRadians(12.5f)), MathF.Cos(MathHelper.DegreesToRadians(17.5f)));
-                i.setPointLights(_pointLightPositions, lightColor, new Vector3(0.3f, 0.3f, 0.3f), specularlight, 1.0f, 0.09f, 0.032f);
+                i.setPointLights(_pointLightPositions, lightColor, new Vector3(0.3f, 0.3f, 0.3f), specularlight, 1.0f, 0.09f, 0.032f);*/
+
+                //direct
+                /*i.setDirectionalLight(new Vector3(0.2f, 1.0f, 0f), lightColor, new Vector3(0.4f, 0.4f, 0.4f), new Vector3(0.5f, 0.5f, 0.5f));
+                i.setSpotLight(camera.Position, camera.Front, new Vector3(0.0f, 0.0f, 0.0f), spotlightColor, new Vector3(1.0f, 1.0f, 1.0f),
+                    1.0f, 0.09f, 0.032f, MathF.Cos(MathHelper.DegreesToRadians(12.5f)), MathF.Cos(MathHelper.DegreesToRadians(17.5f)));
+                i.setPointLights(_pointLightPositions, new Vector3(0.05f, 0.05f, 0.05f), lightColor, specularlight, 1.0f, 0.09f, 0.032f);*/
+
+                i.setDirectionalLight(new Vector3(0.2f, 2.0f, 0f), new Vector3(0.05f, 0.05f, 0.05f), lightColor, new Vector3(0.5f, 0.5f, 0.5f));
+                i.setSpotLight(camera.Position, camera.Front, new Vector3(0.0f, 0.0f, 0.0f), spotlightColor, spotlightColor,
+                    1.0f, 0.09f, 0.032f, MathF.Cos(MathHelper.DegreesToRadians(12.5f)), MathF.Cos(MathHelper.DegreesToRadians(17.5f)));
+                i.setPointLights(_pointLightPositions, new Vector3(0.05f, 0.05f, 0.05f), lightColor, specularlight, 1.0f, 0.09f, 0.032f);
+
+
                 i.render(camera, new Vector3(1, 1, 1), new Vector3(0.75f, 1, 0));
             }
             
@@ -585,7 +664,7 @@ namespace UAS_grafkom
                 if (blink)
                 {
                     blink = false;
-                    lightColor = new Vector3(0.05f, 0.05f, 0.05f);
+                    lightColor = new Vector3(0.5f, 0.5f, 0.5f);
                 }
                 else
                 {
@@ -600,7 +679,7 @@ namespace UAS_grafkom
                 if (dark)
                 {
                     dark = false;
-                    lightColor = new Vector3(0.05f, 0.05f, 0.05f);
+                    lightColor = new Vector3(0.5f, 0.5f, 0.5f);
                     specularlight = new Vector3(1.0f, 1.0f, 1.0f);
                     spotlightColor = new Vector3(0.0f, 0.0f, 0.0f);
                 }
