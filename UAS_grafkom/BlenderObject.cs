@@ -112,18 +112,6 @@ namespace UAS_grafkom
             }
 
         }
-        public void translate(float x, float y, float z)
-        {
-            model = model * Matrix4.CreateTranslation(x, y, z);
-        }
-
-        public void rotate(float x = 0, float y = 0, float z = 0)
-        {
-            //transform
-            model = model * Matrix4.CreateRotationX(MathHelper.DegreesToRadians(x));
-            model = model * Matrix4.CreateRotationY(MathHelper.DegreesToRadians(y));
-            model = model * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(z));
-        }
 
         public void LoadObjFile(string path)
         {
