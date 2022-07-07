@@ -369,7 +369,6 @@ namespace UAS_grafkom
             {
                 Vector3 newPos = camera.Position - camera.Up * cameraSpeed * (float)args.Time;
                 Vector3 temp = -camera.Up * cameraSpeed * (float)args.Time;
-                try31.translate(temp.X, temp.Y, temp.Z);
                 if (!Collision(newPos))
                 {
                     camera.Position = newPos;
