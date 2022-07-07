@@ -134,6 +134,7 @@ namespace UAS_grafkom
                     if(type == "v")
                     {
                         vertices.Add(new Vector3(float.Parse(words[0]) / 10, float.Parse(words[1]) / 10, float.Parse(words[2]) / 10));
+                        //Console.WriteLine(words[0]);
                         
                     } else if (type == "vn")
                     {
